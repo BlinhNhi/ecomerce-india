@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 
+
 const Navbar = () => {
     // navList Data
     const navList = (
@@ -22,13 +23,13 @@ const Navbar = () => {
 
             {/* User */}
             <li>
-                <Link to={'/'}>Kamal</Link>
+                <Link to={'/user-dashboard'}>Kamal</Link> {/* User-Dashboard */}
             </li>
 
             {/* Admin */}
-            {/* <li>
-                <Link to={'/'}>Admin</Link>
-            </li> */}
+            <li>
+                <Link to={'/admin-dashboard'}>Admin</Link> {/* Admin Dashboard */}
+            </li>
 
             {/* logout */}
             {/* <li>
