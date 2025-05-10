@@ -1,8 +1,8 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import ProductDetail from '../../component/admin/ProductDetail';
-import OrderDetail from '../../component/admin/OrderDetail';
-import UserDetail from '../../component/admin/UserDetail';
+import ProductDetail from '../../component/Admin/ProductDetail';
+import OrderDetail from '../../component/Admin/OrderDetail';
+import UserDetail from '../../component/Admin/UserDetail';
 
 const AdminDashboard = () => {
     return (

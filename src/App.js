@@ -5,13 +5,14 @@ import ProductInfo from "./page/ProductInfor/ProductInfor";
 import ScrollTop from "./component/ScrollTop/ScrollTop";
 import CartPage from "./page/Cart/Cart";
 import AllProduct from "./page/AllProduct/AllProduct";
-import Signup from "./page/registration/Signup";
-import Login from "./page/registration/Login";
+import Signup from "./page/Registration/Signup";
+import Login from "./page/Registration/Login";
 import UserDashboard from "./page/User/UserDashboard";
 import AdminDashboard from "./page/Admin/AdminDashboard";
-import AddProductPage from "./component/admin/AddProductPage";
-import UpdateProductPage from "./component/admin/UpdateProductPage";
+import AddProductPage from "./component/Admin/AddProductPage";
+import UpdateProductPage from "./component/Admin/UpdateProductPage";
 import MyState from "./context/myState";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -30,9 +31,8 @@ function App() {
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/addproduct" element={<AddProductPage />} />
           <Route path="/updateproduct" element={<UpdateProductPage />} />
-
-
         </Routes>
+        <Toaster></Toaster>
       </MyState>
     </div>
   );
