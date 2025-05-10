@@ -1,5 +1,4 @@
 import Layout from "../../component/Layout/Layout";
-
 const products = [
     {
         id: 1,
@@ -15,6 +14,12 @@ const products = [
 ]
 
 const UserDashboard = () => {
+    // user
+    const user = JSON.parse(localStorage.getItem('users'));
+
+    // console.log(user)
+
+
     return (
         <Layout>
             <div className=" container mx-auto px-4 py-5 lg:py-8">
@@ -28,8 +33,29 @@ const UserDashboard = () => {
                         </div>
                         {/* text  */}
                         <div className="">
-                            <h1 className=" text-center text-lg"><span className=" font-bold">Name :</span> Kamal Nayan Upadhyay</h1>
-                            <h1 className=" text-center text-lg"><span className=" font-bold">Email :</span> test@gmail.com</h1>
+                            {/* Name  */}
+                            <h1 className=" text-center text-lg">
+                                <span className=" font-bold">Name : </span>
+                                {user?.name}
+                            </h1>
+
+                            {/* Email  */}
+                            <h1 className=" text-center text-lg">
+                                <span className=" font-bold">Email : </span>
+                                {user?.email}
+                            </h1>
+
+                            {/* Date  */}
+                            <h1 className=" text-center text-lg">
+                                <span className=" font-bold">Date : </span>
+                                {user?.date}
+                            </h1>
+
+                            {/* Role  */}
+                            <h1 className=" text-center text-lg">
+                                <span className=" font-bold">Role : </span>
+                                {user?.role}
+                            </h1>
                         </div>
                     </div>
                 </div>
