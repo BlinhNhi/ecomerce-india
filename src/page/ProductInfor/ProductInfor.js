@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { fireDB } from "../../frisebase/FirebaseConfig";
 import { useParams } from "react-router";
 import { doc, getDoc } from "firebase/firestore";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 import myContext from "../../context/myContext";
+import { fireDB } from "../../frisebase/FirebaseConfig";
 import Loader from "../../component/Loader/Loader";
 import Layout from "../../component/Layout/Layout";
-import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteFromCart } from "../../redux/cartSlice";
-import toast from "react-hot-toast";
 
 const ProductInfo = () => {
     const context = useContext(myContext);
