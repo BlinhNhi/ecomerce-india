@@ -6,9 +6,14 @@ import { doc, getDoc } from "firebase/firestore";
 import myContext from "../../context/myContext";
 import Loader from "../../component/Loader/Loader";
 import Layout from "../../component/Layout/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, deleteFromCart } from "../../redux/cartSlice";
+import toast from "react-hot-toast";
 
 const ProductInfo = () => {
     const context = useContext(myContext);
+    const cartItems = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
     const { loading, setLoading } = context;
     const [product, setProduct] = useState('')
     const { id } = useParams()
@@ -25,6 +30,28 @@ const ProductInfo = () => {
             setLoading(false)
         }
     }
+
+    const addCart = (item) => {
+        const cleanItem = {
+            ...item,
+            time: item.time?.toDate?.().toISOString?.() || item.time
+        };
+        dispatch(addToCart(cleanItem));
+        toast.success("Add to cart")
+    }
+
+    const deleteCart = (item) => {
+        const cleanItem = {
+            ...item,
+            time: item.time?.toDate?.().toISOString?.() || item.time
+        };
+        dispatch(deleteFromCart(cleanItem));
+        toast.success("Delete cart")
+    }
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+    }, [cartItems])
 
 
     useEffect(() => {
@@ -135,13 +162,22 @@ const ProductInfo = () => {
 
                                         <div className="mb-6 " />
                                         <div className="flex flex-wrap items-center mb-6">
-
-
-                                            <button
-                                                className="w-full px-4 py-3 text-center text-pink-600 bg-pink-100 border border-pink-600  hover:bg-pink-600 hover:text-gray-100  rounded-xl"
-                                            >
-                                                Add to cart
-                                            </button>
+                                            {cartItems.some((p) => p.id === product.id)
+                                                ?
+                                                <button
+                                                    onClick={() => deleteCart(product)}
+                                                    className="w-full px-4 py-3 text-center text-white bg-red-500 border border--600  hover:bg-red-600 hover:text-gray-100  rounded-xl"
+                                                >
+                                                    Delete To Cart
+                                                </button>
+                                                :
+                                                <button
+                                                    onClick={() => addCart(product)}
+                                                    className="w-full px-4 py-3 text-center text-pink-600 bg-pink-100 border border-pink-600  hover:bg-pink-600 hover:text-gray-100  rounded-xl"
+                                                >
+                                                    Add to Cart
+                                                </button>
+                                            }
                                         </div>
                                     </div>
                                 </div>

@@ -1,16 +1,42 @@
 import { useNavigate } from "react-router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import myContext from "../../context/myContext";
 import Layout from "../../component/Layout/Layout";
 import Loader from "../../component/Loader/Loader";
+import { addToCart, deleteFromCart } from "../../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 
 const AllProduct = () => {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     const context = useContext(myContext);
     const { getAllProduct, loading } = context;
+    const cartItems = useSelector((state) => state.cart);
+
+    const addCart = (item) => {
+        const cleanItem = {
+            ...item,
+            time: item.time?.toDate?.().toISOString?.() || item.time
+        };
+        dispatch(addToCart(cleanItem));
+        toast.success("Add to cart");
+    }
+    const deleteCart = (item) => {
+        const cleanItem = {
+            ...item,
+            time: item.time?.toDate?.().toISOString?.() || item.time
+        };
+        dispatch(deleteFromCart(cleanItem));
+        toast.success("Delete cart")
+    }
+
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+    }, [cartItems])
     return (
         <Layout>
             <div className="py-8">
@@ -48,10 +74,25 @@ const AllProduct = () => {
                                                     ₹{price}
                                                 </h1>
 
-                                                <div className="flex justify-center ">
-                                                    <button className=" bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold">
-                                                        Add To Cart
-                                                    </button>
+                                                <div
+                                                    className="flex justify-center ">
+                                                    {cartItems.some((p) => p.id === item.id)
+
+                                                        ?
+                                                        <button
+                                                            onClick={() => deleteCart(item)}
+                                                            className=" bg-red-700 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold">
+                                                            Delete To Cart
+                                                        </button>
+
+                                                        :
+
+                                                        <button
+                                                            onClick={() => addCart(item)}
+                                                            className=" bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold">
+                                                            Add To Cart
+                                                        </button>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
