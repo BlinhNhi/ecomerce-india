@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 
 const Navbar = () => {
-    // get user from localStorage 
     const user = JSON.parse(localStorage.getItem('users'));
 
     // navigate 
