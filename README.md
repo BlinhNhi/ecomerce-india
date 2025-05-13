@@ -15,15 +15,22 @@ Ecommerce Indian is designed to make online shopping through the website easy. W
 + Easily create CRUD products.
 + Manage user orders.
 + Manage number of users
-+ 
+  
+
 ## How To Run
-Frontend ()
+-   FireBase:
+      - Create a project.           
+-   Frontend ()
        -   Installation NodeJS
-       -  Get web app's Firebase configuration on Firebae give in file FireBaseConfig.
        -   Installation dependencies
             ```bash
             $ npm i
             $ npm start
             ```
-FireBase:
-      - Create a project.
+
+## Techs:
+       -   ReactJS - A JavaScript library for building user interfaces.
+       -   Redux - A predictable state container for JavaScript apps.
+       -   NodeJS - A JavaScript runtime built on Chrome's V8 JavaScript engine
+       -   Firsebase -  A proprietary relational database management
+
