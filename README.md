@@ -1,7 +1,7 @@
 # Ecommerce Indian
 Link website: <a href="https://ecomerce-india.vercel.app/category/shoes">https://ecomerce-india.vercel.app/category/shoes</a>
 
-Ecommerce Indian is a shoe sales system implemented using React, Firebase.
+Ecommerce Indian is a shopping web system implemented using React, Firebase.
 Ecommerce Indian is designed to make online shopping through the website easy. With Ecommerce Indian Shopping System, you can:
 Ecommerce Indian is a shopping system implemented using React, Firebase.
 Ecommerce Indian is designed to make online shopping through the website easy. With Ecommerce Indian System, you can:
